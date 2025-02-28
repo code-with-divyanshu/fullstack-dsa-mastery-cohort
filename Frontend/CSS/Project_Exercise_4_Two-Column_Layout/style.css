@@ -1,0 +1,95 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  color: #333;
+  line-height: 1.6;
+}
+
+header {
+  text-align: center;
+}
+
+header h1 {
+  background-color: #333;
+  color: #fff;
+  padding: 0.5rem;
+  opacity: 0.9;
+}
+
+header nav {
+  background-color: #f4f4f4;
+  padding: 1rem;
+}
+
+header nav a {
+  background-color: #f4f4f4;
+  padding: 1rem;
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.sidebar {
+  flex: 1;
+  padding: 20px;
+  background-color: #f4f4f4;
+  height: 120dvh;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li:first-child {
+  border: none;
+}
+
+.sidebar ul li {
+  border-top: #333 solid 1px;
+  padding: 8px 0;
+}
+
+.imgs-box {
+  display: flex;
+  justify-content: center;
+  padding: 10px 50px;
+  gap: 5px;
+}
+
+.imgs-box img {
+  width: 100%;
+  min-width: 33%;
+  height: 100%;
+  max-height: 400px;
+  margin: 10px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.main-content {
+  flex: 6;
+  padding: 20px;
+}
+
+.main-content ul li {
+  margin: 5px 30px;
+}
+
+footer {
+  text-align: center;
+  background-color: #232323;
+  color: #fff;
+  padding: 0.5rem;
+}
