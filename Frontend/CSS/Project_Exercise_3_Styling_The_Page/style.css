@@ -1,0 +1,70 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+}
+
+.container {
+  background-color: #f4f4f4;
+  margin: 40px;
+  padding: 40px 0 0 0;
+  border-radius: 10px;
+}
+
+.container h1 {
+  margin: 0 10px;
+}
+
+nav {
+  background-color: rgb(32, 157, 220);
+  margin: 10px 0;
+  text-align: center;
+  padding: 20px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  margin: 10px;
+}
+
+section {
+  background-color: white;
+  margin: 20px 5px;
+  padding: 20px 10px;
+  border-radius: 10px;
+}
+
+.img-box {
+  text-align: center;
+}
+
+img {
+  border-radius: 10px;
+}
+
+.list-box li {
+  margin: 10px 0;
+}
+
+.list-box_2 li {
+  margin: 10px 100px;
+}
+
+p.thanks {
+  margin: 60px 0 20px 0;
+}
+
+footer {
+  background-color: black;
+  text-align: center;
+  color: white;
+  margin: 30px 0;
+  padding: 8px;
+}
