@@ -87,3 +87,50 @@ console.log(y); // null (empty value)
 console.log(0 / 0); // NaN  (invalid mathematical operations)
 console.log("hello" - 2); // NaN (invalid mathematical operations)
 console.log(Math.sqrt(-1)); // NaN (invalid mathematical operations)
+
+// Day-02 Practice Question
+
+// Topic 3 - Loops
+
+// Q 11. Print 10-1 using while loop
+
+let i = 10;
+while (i > 0) {
+  console.log(i);
+  i--;
+} // print 10 to 1
+
+// Q 12. Print multiple of 3 to 30 using while loop
+
+let i = 3;
+while (i <= 30) {
+  console.log(i);
+  i += 3;
+} // print all multiple of 3 to 30
+
+// Q 13. Print sum of 1 to 100 using for loop
+
+let sum = 0;
+for (let i = 1; i <= 100; i++) {
+  sum += i;
+}
+
+console.log(sum); // print sum = 5050
+
+// Q 14. Print Star pattern using nesetd loop
+
+for (let i = 1; i <= 5; i++) {
+  let star = "";
+  for (let j = 1; j <= i; j++) {
+    star += "*";
+  }
+  console.log(star);
+}
+
+// Q 15. Use for-of loop iterate over sting "JavaScript"
+
+let str = "JavaScript";
+
+for (let char of str) {
+  console.log(char);
+} // print char of string
