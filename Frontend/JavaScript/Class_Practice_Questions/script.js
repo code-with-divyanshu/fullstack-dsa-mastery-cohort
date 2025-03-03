@@ -134,3 +134,62 @@ let str = "JavaScript";
 for (let char of str) {
   console.log(char);
 } // print char of string
+
+// Day-03 Practice Question
+
+// Topic 4  - Arrays
+
+// Q 16. Remove duplicate values from array
+
+let arr = [1, 2, 1, 1, 2, 4, 4, 3, 4, 3, 5, 6];
+
+let newArr = [...new Set(arr)];
+
+console.log(newArr); // [1,2,3,4,5,6]
+
+// Q 17. Find Second Largest no in an array
+
+let arr = [1, 23, 35, 53, 3, 5, 2, 9, 7, 57, 89];
+let newArr = arr.sort((a, b) => b - a);
+console.log(newArr[1]); // second largest no in array = 57
+
+// Q 18. short an array in descending order
+
+let arr = [45, 32, 53, 75, 3, 2, 6, 8, 12, 65];
+let shortArr = arr.sort((a, b) => b - a);
+console.log(shortArr);
+
+// Q 19. Reversed an array value without using .reverse() method
+
+let arr = [23, 42, 12, 67, 74, 34, 53];
+let reverseArr = [];
+for (let i = arr.length - 1; i >= 0; i--) {
+  reverseArr.push(arr[i]);
+}
+
+console.log(reverseArr);
+
+// Q 20. Find the most frequent element in an arrray
+
+let arr = [1, 3, 2, 1, 4, 2, 1, 3, 2, 5, 2];
+let obj = {};
+
+// using for each method
+
+arr.forEach((val) => (obj[val] === undefined ? (obj[val] = 1) : obj[val]++));
+console.log(obj);
+
+// using for loop
+
+let maxFreq = 0;
+let mostFreqNum = null;
+
+for (let num of arr) {
+  obj[num] = (obj[num] || 0) + 1;
+  if (obj[num] > maxFreq) {
+    maxFreq = obj[num];
+    mostFreqNum = num;
+  }
+
+  console.log(mostFreqNum);
+}
