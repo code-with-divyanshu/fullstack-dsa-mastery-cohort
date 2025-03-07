@@ -1,8 +1,8 @@
-// // Day-04 Practice Question
+// Day-04 Practice Question
 
-// // Topic 5  - Callback , Higher Order Function and Closure
+// Topic 5  - Callback , Higher Order Function and Closure
 
-// // Q 21. Create a function give them another function as argument which run after 3 second
+// Q 1. Create a function give them another function as argument which run after 3 second
 
 function callerFun(fn) {
   setTimeout(fn, 3000);
@@ -10,7 +10,7 @@ function callerFun(fn) {
 
 callerFun(() => console.log("Hey")); // log Hey after 3 second
 
-// Q 22. Create your own function like map
+// Q 2. Create your own function like map
 
 let arr = [1, 2, 3, 4, 5, 6];
 
@@ -28,7 +28,7 @@ let ans = hap(arr, function (val) {
 
 console.log(ans); // [4, 5, 6, 7, 8, 9]
 
-// Q 23. Create a function that uses closures to create a counter
+// Q 3. Create a function that uses closures to create a counter
 
 function counter() {
   let count = 0;
@@ -43,7 +43,7 @@ useCounter(); // 1
 useCounter(); // 2
 useCounter(); // 3
 
-// Q 24. implement function that have limit function can call
+// Q 4. implement function that have limit function can call
 
 function fnlimiter(fn, limit) {
   let totalcalled = 0;
@@ -64,3 +64,73 @@ limiter();
 limiter();
 limiter();
 limiter(); // limit reached here
+
+// Day - 05
+
+// Q1. Repeating a function ar intervals (Using Callbacks)
+
+function chalteRaho(fn, time) {
+  setInterval(fn, time);
+}
+
+// chalteRaho(() => {
+//   console.log("hello");
+// }, 2000);
+
+// Q2. Creating a function with a Preset Greeting(Using Closures)
+
+function greeting(greet) {
+  return (name) => {
+    console.log(`${greet}! ${name}`);
+  };
+}
+
+let greetKaro = greeting("Hello , Kaise Ho");
+let greetKaro2 = greeting("Coding Kaise Chal Rahi h");
+
+greetKaro("Karan");
+greetKaro2("Rahul");
+
+// Q3. Executing a function only once (Using HOFs + Closures)
+
+function CalledOnce(fn) {
+  let executed = false;
+  return () => {
+    if (!executed) {
+      executed = true;
+      fn();
+    } else {
+      console.error("Already Excuted Ones");
+    }
+  };
+}
+
+newFun = CalledOnce(() => {
+  console.log("Run One Time only");
+});
+
+newFun();
+newFun();
+newFun();
+
+// Q4. Throttling a function (Using HOFs + Closures)
+
+function throt(fn, delay) {
+  let lastCall = 0;
+  return () => {
+    let current = Date.now();
+    if (current - lastCall >= delay) {
+      lastCall = current;
+      fn();
+    }
+  };
+}
+
+let calledThrot = throt(() => {
+  console.log("hello");
+}, 2000);
+
+calledThrot();
+calledThrot();
+calledThrot();
+calledThrot();
