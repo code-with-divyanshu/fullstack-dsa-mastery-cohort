@@ -15,8 +15,6 @@ In this session, I focused on **nested loops** and their usage in **pattern prog
 
 These exercises helped strengthen my **looping concepts** and problem-solving abilities.
 
-🔗 **GitHub Repo:** [Add your repo link here]
-
 ---
 
 ## **📂 Questions and Explanations**

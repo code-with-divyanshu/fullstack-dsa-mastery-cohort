@@ -105,8 +105,6 @@ In this assignment, I worked on solving mathematical and logical problems using 
 
 Each problem helped me strengthen my **problem-solving skills, logical thinking, and number manipulation techniques**.
 
-🔗 **GitHub Repo:** [Add your repo link here]
-
 ---
 
 ## **📂 Questions and Explanations**
