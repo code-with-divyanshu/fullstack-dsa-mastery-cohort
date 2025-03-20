@@ -80,3 +80,19 @@ for (let i = 1; i <= n; i++) {
   }
   console.log();
 }
+
+// Q5. Strong Number
+
+let ans = 0;
+let copy = n;
+while (n > 0) {
+  let rem = n % 10;
+  let fact = 1;
+  for (let i = 1; i <= rem; i++) {
+    fact *= i;
+  }
+  ans += fact;
+  n = Math.floor(n / 10);
+}
+
+console.log(copy === ans ? "Strong Number" : "No Strong Number");

@@ -84,7 +84,26 @@ Prints a **V-shaped star pattern**, with stars positioned symmetrically.
     *
 ```
 
-🔹 Used conditions `(i === j || i + j === 2 * n)` for alignment.
+### **4️⃣ V-Shape Pattern**
+
+Prints a **Strong Number**.  
+✅ **Example for `n = 145`:**
+
+```js
+let ans = 0;
+let copy = n;
+while (n > 0) {
+  let rem = n % 10;
+  let fact = 1;
+  for (let i = 1; i <= rem; i++) {
+    fact *= i;
+  }
+  ans += fact;
+  n = Math.floor(n / 10);
+}
+
+console.log(copy === ans ? "Strong Number" : "No Strong Number");
+```
 
 ---
 
