@@ -25,11 +25,3 @@ for (let i = 1; i < arr2.length; i++) {
   }
 }
 console.log(maxElement); // 100
-
-let seconMaxElement = arr2[0];
-for (let i = 1; i < arr2.length; i++) {
-  if (arr2[i] > seconMaxElement) {
-    seconMaxElement = arr2[i];
-  }
-}
-console.log(seconMaxElement); // 100
