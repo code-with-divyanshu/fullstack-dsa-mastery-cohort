@@ -199,5 +199,3 @@ console.log(`SecondMin of arr is ${secondMin}`);
 Looking forward to **more advanced array operations and searching techniques!** 🚀
 
 ---
-
-Let me know if you need any modifications! ✅🔥
