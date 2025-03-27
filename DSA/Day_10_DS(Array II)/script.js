@@ -87,14 +87,14 @@ console.log(arr3);
 
 // my approach
 
-for (let i = 0; i < arr3.length; i++) {
-  if (arr3[i] === 0) {
-    let temp = arr3[i];
-    arr3[i] = arr3[pointer2];
-    arr3[pointer2] = temp;
-    pointer2++;
-  }
-}
+// for (let i = 0; i < arr3.length; i++) {
+//   if (arr3[i] === 0) {
+//     let temp = arr3[i];
+//     arr3[i] = arr3[pointer2];
+//     arr3[pointer2] = temp;
+//     pointer2++;
+//   }
+// }
 
 // Q4. Array left rotation by 1
 
@@ -122,10 +122,12 @@ console.log(arr5);
 
 // find second min from array (done by me)
 
+let arr6 = [28, 6, 75, 48, 84, 79, 84];
+
 let firstmMin = Infinity;
 let secondMin = Infinity;
 
-for (let val of arr) {
+for (let val of arr6) {
   if (firstmMin > val) {
     secondMin = firstmMin;
     firstmMin = val;
@@ -134,4 +136,4 @@ for (let val of arr) {
   }
 }
 
-console.log(`SecondMin of arr is ${secondMin}`);
+console.log(`SecondMin of arr6 is ${secondMin}`);
