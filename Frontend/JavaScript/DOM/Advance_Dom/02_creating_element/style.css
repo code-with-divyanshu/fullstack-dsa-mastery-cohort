@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: gilory;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+button {
+  background-color: rgb(15, 214, 211);
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: 600;
+  position: relative;
+  z-index: 50;
+}
+
+button:active {
+  scale: 0.95;
+}
