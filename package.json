@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "nanoid": "^5.1.5",
     "prompt-sync": "^4.2.0"
   }
 }
