@@ -1,6 +1,7 @@
 import { nanoid } from "nanoid";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
 const Create = ({ todos, setTodos }) => {
   const {
@@ -15,9 +16,9 @@ const Create = ({ todos, setTodos }) => {
   const submitHandler = (data) => {
     data.id = nanoid();
     data.isCompleted = false;
-    console.log(data);
 
     setTodos((prevTodo) => [...prevTodo, data]);
+    toast.success("Todo Created Successfully");
     reset();
   };
 

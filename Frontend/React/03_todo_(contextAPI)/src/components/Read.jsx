@@ -1,3 +1,5 @@
+import { toast } from "react-toastify";
+
 const Read = (props) => {
   let todos = props.todos;
   let setTodos = props.setTodos;
@@ -5,6 +7,7 @@ const Read = (props) => {
   const deleteTodo = (todoId) => {
     todos = todos.filter((todo) => todo.id !== todoId);
     setTodos(todos);
+    toast.error("Todo Deleted Successfully");
   };
 
   const completeTask = (todoId) => {
