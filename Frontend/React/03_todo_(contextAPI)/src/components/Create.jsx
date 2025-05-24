@@ -1,17 +1,19 @@
+import { useContext } from "react";
+
 import { nanoid } from "nanoid";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import { todoContect } from "../context/ContextWrapper";
 
-const Create = ({ todos, setTodos }) => {
+const Create = () => {
+  const [todos, setTodos] = useContext(todoContect);
+
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm();
-
-  useForm;
 
   const submitHandler = (data) => {
     data.id = nanoid();

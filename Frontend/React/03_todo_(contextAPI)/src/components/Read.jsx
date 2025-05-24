@@ -1,8 +1,9 @@
+import { useContext } from "react";
 import { toast } from "react-toastify";
+import { todoContect } from "../context/ContextWrapper";
 
-const Read = (props) => {
-  let todos = props.todos;
-  let setTodos = props.setTodos;
+const Read = () => {
+  let [todos, setTodos] = useContext(todoContect);
 
   const deleteTodo = (todoId) => {
     todos = todos.filter((todo) => todo.id !== todoId);
@@ -16,6 +17,9 @@ const Read = (props) => {
     );
 
     setTodos(completeTodo);
+    toast.success("Task Completed", {
+      icon: "✔️",
+    });
   };
 
   const renderTodos = todos.map((todo) => {
