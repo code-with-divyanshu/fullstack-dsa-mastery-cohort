@@ -32,9 +32,9 @@ const Navbar = () => {
               e.isActive ? "text-purple-600" : ""
             }`
           }
-          to="/services"
+          to="/product"
         >
-          Services
+          Product
         </NavLink>
         <NavLink
           className={(e) =>
@@ -42,9 +42,9 @@ const Navbar = () => {
               e.isActive ? "text-purple-600" : ""
             }`
           }
-          to="/product"
+          to="/services"
         >
-          Product
+          Services
         </NavLink>
       </nav>
     </header>

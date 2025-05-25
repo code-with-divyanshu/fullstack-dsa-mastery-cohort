@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 const Product = () => {
   const navigate = useNavigate();
 
-  const navigatorHandler = () => {
-    navigate("/product/detail");
+  const navigatorHandler = (name) => {
+    navigate(`/product/detail/${name}`);
   };
 
   // child navigation
@@ -17,7 +17,7 @@ const Product = () => {
         <h2 className="text-2xl font-semibold mb-3">Product 1</h2>
         <button
           className="bg-purple-500 py-2 px-5 rounded-md"
-          onClick={navigatorHandler}
+          onClick={() => navigatorHandler("Product 1")}
         >
           See Details
         </button>
@@ -27,7 +27,7 @@ const Product = () => {
         <h2 className="text-2xl font-semibold mb-3">Product 2</h2>
         <button
           className="bg-purple-500 py-2 px-5 rounded-md"
-          onClick={navigatorHandler}
+          onClick={() => navigatorHandler("Product 2")}
         >
           See Details
         </button>
@@ -37,7 +37,7 @@ const Product = () => {
         <h2 className="text-2xl font-semibold mb-3">Product 3</h2>
         <button
           className="bg-purple-500 py-2 px-5 rounded-md"
-          onClick={navigatorHandler}
+          onClick={() => navigatorHandler("Product 3")}
         >
           See Details
         </button>
