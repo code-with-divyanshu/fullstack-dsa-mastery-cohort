@@ -3,19 +3,19 @@ import logo from "../assets/logo.jpg";
 
 const Navbar = () => {
   return (
-    <header className="h-20 w-full flex justify-between gap-5 items-center mb-10 bg-sky-400 px-10 lg:px-20">
+    <header className="w-full h-20 lg:px-20 sm:px-10 px-5 flex justify-between gap-5 items-center bg-cyan-400">
       <img
         src={logo}
         width={100}
         height={100}
-        className="w-15 h-15 rounded-full"
+        className="sm:w-15 sm:h-15 w-10 h-10 rounded-full"
         alt=""
       />
-      <nav className="flex justify-center items-center gap-10 lg:gap-30">
+      <nav className="flex justify-center items-center gap-5 md:px-20 md:gap-10 lg:gap-20">
         <NavLink
           to="/"
           className={(e) =>
-            `text-lg font-bold transition-all duration-200 ease-[ease]  ${
+            `sm:text-lg font-semibold transition-all duration-200 ease-[ease]  ${
               e.isActive ? "text-pink-500 border-b-4 border-purple-700" : ""
             }`
           }
@@ -25,7 +25,7 @@ const Navbar = () => {
         <NavLink
           to="/about"
           className={(e) =>
-            `text-lg font-bold transition-all duration-200 ease-[ease]  ${
+            `sm:text-lg font-semibold transition-all duration-200 ease-[ease]  ${
               e.isActive ? "text-pink-500 border-b-4 border-purple-700" : ""
             }`
           }
@@ -35,7 +35,7 @@ const Navbar = () => {
         <NavLink
           to="/recipes"
           className={(e) =>
-            `text-lg font-bold transition-all duration-200 ease-[ease]  ${
+            `sm:text-lg font-semibold transition-all duration-200 ease-[ease]  ${
               e.isActive ? "text-pink-500 border-b-4 border-purple-700" : ""
             }`
           }
@@ -45,8 +45,8 @@ const Navbar = () => {
         <NavLink
           to="/create-recipes"
           className={(e) =>
-            `text-lg font-bold transition-all duration-200 ease-[ease] px-4 py-2 bg-pink-700 rounded-md  ${
-              e.isActive ? "!bg-fuchsia-600" : ""
+            `text-lg font-semibold transition-all duration-200 ease-[ease] sm:px-4 sm:py-2 px-2 bg-fuchsia-600 rounded-md flex hover:scale-105  ${
+              e.isActive ? "! bg-pink-700" : ""
             }`
           }
         >
