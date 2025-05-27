@@ -2,17 +2,23 @@ import { nanoid } from "nanoid";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { recipecontext } from "../context/RecipeContext";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const CreateRecipes = () => {
+  const navigate = useNavigate();
+
   const [data, setData] = useContext(recipecontext);
+  const { register, handleSubmit, reset } = useForm();
 
   const sumbitHandler = (recipe) => {
     recipe.id = nanoid();
     setData([...data, recipe]);
+    toast.success("New recipe created successfully!");
+    navigate("/recipes");
     reset("");
   };
 
-  const { register, handleSubmit, reset } = useForm();
   return (
     <div className="w-full md:flex justify-center items-center">
       <form
@@ -65,9 +71,10 @@ const CreateRecipes = () => {
           {...register("category")}
           className="block border-b-2 outline-0 border-b-blue-500 p-2.5 text-lg text-gray-400 font-semibold"
         >
-          <option value="veg">Vegetarian</option>
-          <option value="non-veg">Non Vegetarian</option>
-          <option value="vegan">Vegan</option>
+          <option value="breakfast">Breakfast</option>
+          <option value="lunch">Lunch</option>
+          <option value="snack">Snak</option>
+          <option value="dinner">Dinner</option>
         </select>
 
         <button className="bg-purple-800 text-xl py-2 px-5 rounded-xl mt-5 hover:bg-pink-800">
