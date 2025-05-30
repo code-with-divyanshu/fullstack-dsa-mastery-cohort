@@ -4,6 +4,7 @@ import Recipes from "../pages/Recipes";
 import About from "../pages/About";
 import CreateRecipes from "../pages/CreateRecipes";
 import SingleRecipe from "../pages/SingleRecipe";
+import LearnAxios from "../pages/LearnAxios";
 
 const MainRoutes = () => {
   return (
@@ -13,6 +14,7 @@ const MainRoutes = () => {
       <Route path="/recipes" element={<Recipes />} />
       <Route path="/recipe/details/:id" element={<SingleRecipe />} />
       <Route path="/create-recipes" element={<CreateRecipes />} />
+      <Route path="/learn-axios" element={<LearnAxios />} />
     </Routes>
   );
 };
