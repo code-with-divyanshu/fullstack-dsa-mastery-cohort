@@ -1,125 +1,126 @@
 import { useContext } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import { recipecontext } from "../context/RecipeContext";
 import { toast } from "react-toastify";
-import { useForm } from "react-hook-form";
 
 const SingleRecipe = () => {
-  const [data, setData] = useContext(recipecontext);
+  const [data, setData, favourite, setFavourite] = useContext(recipecontext);
+
   const params = useParams();
   const navigate = useNavigate();
-  const recipe = data.find((recipe) => params.id == recipe.id);
-  const { register, handleSubmit, reset } = useForm({
-    defaultValues: {
-      title: recipe.title,
-      image: recipe.image,
-      chef: recipe.chef,
-      description: recipe.description,
-      ingredients: recipe.ingredients,
-      instructions: recipe.instructions,
-      category: recipe.category,
-    },
-  });
 
-  const sumbitHandler = (recipe) => {
-    const index = data.findIndex((recipe) => params.id == recipe.id);
-    const copyData = [...data];
-    copyData[index] = { ...copyData[index], ...recipe };
-    setData(copyData);
-    toast.success("Update Successfully");
-  };
+  const recipe = data.find((recipe) => recipe.id == params.id);
 
   const deleteHandler = () => {
-    const filterRecipe = data.filter((recipe) => recipe.id != params.id);
-    setData(filterRecipe);
-    toast.error("recipe deleted succefully");
+    const filteredRecipe = data.filter((recipe) => recipe.id !== params.id);
+    const filteredFavorite = favourite.filter(
+      (recipe) => recipe.id !== params.id
+    );
+    setData(filteredRecipe);
+    setFavourite(filteredFavorite);
+    localStorage.setItem("recipes", JSON.stringify(filteredRecipe));
+    localStorage.setItem("fav", JSON.stringify(filteredFavorite));
+    toast.error("Recipe deleted successfully");
     navigate("/recipes");
   };
+
+  const favControl = (recipe) => {
+    const isAlreadyFav = favourite.some((fav) => fav.id === recipe.id);
+    if (!isAlreadyFav) {
+      const updatedFavs = [...favourite, recipe];
+      setFavourite(updatedFavs);
+      localStorage.setItem("fav", JSON.stringify(updatedFavs));
+      toast.success("Added to favourites");
+    }
+  };
+
+  const unFavControl = (recipe) => {
+    const updatedFavs = favourite.filter((rec) => rec.id !== recipe.id);
+    setFavourite(updatedFavs);
+    localStorage.setItem("fav", JSON.stringify(updatedFavs));
+    toast.info("Removed from favourites");
+  };
+
+  console.log(favourite);
 
   if (!recipe) return <p className="text-center text-gray-500">Loading...</p>;
 
   return (
-    <div className="w-full  flex flex-wrap max-w-screen justify-center items-center gap-40">
-      <div className="sm:1/2">
+    <div className="w-full max-w-screen flex justify-center items-center gap-10 bg-bg-primary p-6">
+      <div className="w-full max-w-2xl">
         <img
           src={recipe.image}
-          alt="All Recipes"
-          className="block w-full max-w-80 rounded-xl mb-4 object-cover object-center h-full"
+          alt={recipe.title}
+          className="block w-full rounded-xl mb-4 object-cover object-center border border-border-shadow"
+          style={{ height: "auto", maxHeight: "400px" }}
         />
         <div className="flex justify-between mb-3">
-          <p className="text-lg text-cyan-700 font-medium">{recipe.chef}</p>
-          <p className="text-lg text-pink-700 font-medium">{recipe.category}</p>
+          <p className="text-lg text-text-primary font-medium">{recipe.chef}</p>
+          <p className="text-lg text-accent font-medium capitalize">
+            {recipe.category}
+          </p>
         </div>
-        <h3 className="text-2xl text-purple-600 font-bold">{recipe.title}</h3>
+        <h3 className="text-2xl text-accent font-bold mb-4">{recipe.title}</h3>
+        {/* Description */}
+        <p className="mb-4 text-text-primary text-base font-medium">
+          {recipe.description}
+        </p>
+
+        {/* <i onClick={() => favControl(recipe)} className="bi bi-heart-fill"></i>
+
+        <i onClick={() => unFavControl(recipe)} className="bi bi-heart"></i> */}
+
+        {favourite.some((fav) => fav.id === recipe.id) ? (
+          <i
+            onClick={() => unFavControl(recipe)}
+            className="bi bi-heart-fill text-red-500 text-2xl cursor-pointer"
+            title="Remove from favourites"
+          ></i>
+        ) : (
+          <i
+            onClick={() => favControl(recipe)}
+            className="bi bi-heart text-gray-400 text-2xl cursor-pointer"
+            title="Add to favourites"
+          ></i>
+        )}
+
+        {/* Ingredients
+        <div className="mb-4">
+          <h4 className="text-xl font-semibold text-highlight mb-2">
+            Ingredients:
+          </h4>
+          <ul className="list-disc list-inside text-text-primary">
+            {recipe.ingredients.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
+          </ul>
+        </div> */}
+
+        {/* Instructions */}
+        {/* <div className="mb-6">
+          <h4 className="text-xl font-semibold text-highlight mb-2">
+            Instructions:
+          </h4>
+          <ol className="list-decimal list-inside text-text-primary space-y-1">
+            {recipe.instructions.map((step, index) => (
+              <li key={index}>{step}</li>
+            ))}
+          </ol>
+        </div> */}
+        {/* Buttons */}
         <button
           onClick={deleteHandler}
-          className="text-sm p-3 px-4 mt-5 rounded-lg uppercase font-medium tracking-wider inline-block shadow-md bg-black text-white"
-          href="/recipe-item/664c8f193e7aa067e94e82cc"
+          className="text-lg p-3 rounded-lg uppercase font-medium tracking-wider shadow-md bg-accent w-full text-yellow-200 hover:bg-hover transition mb-4"
         >
           Delete Recipe
         </button>
-      </div>
-
-      <form
-        onSubmit={handleSubmit(sumbitHandler)}
-        className="sm:w-1/2  bg-gradient-to-r from-pink-200 to-fuchsia-400  p-10 rounded-xl"
-      >
-        <input
-          {...register("image")}
-          type="url"
-          placeholder="Enter url of recipe image"
-          className="block border-b-2 outline-0 border-b-blue-500 p-2.5 w-full text-lg placeholder:text-gray-400 placeholder:font-semibold"
-        />
-
-        <input
-          {...register("title")}
-          type="text"
-          placeholder="Recipe Title"
-          className="block border-b-2 outline-0 border-b-blue-500 p-2.5 text-lg placeholder:text-gray-400  w-full placeholder:font-semibold"
-        />
-
-        <input
-          {...register("chef")}
-          type="text"
-          placeholder="Chef Name"
-          className="block border-b-2 outline-0 w-full border-b-blue-500 p-2.5 text-lg placeholder:text-gray-400 placeholder:font-semibold"
-        />
-
-        <textarea
-          {...register("description")}
-          type="text"
-          placeholder="Enter Description Here"
-          className="block border-b-2 outline-0 border-b-blue-500 p-2.5 text-lg placeholder:text-gray-400 placeholder:font-semibold w-full"
-        ></textarea>
-
-        <textarea
-          {...register("ingredients")}
-          type="text"
-          placeholder="Write ingredients seperated by comma"
-          className="block border-b-2 outline-0 border-b-blue-500 p-2.5 text-lg placeholder:text-gray-400 placeholder:font-semibold h-40 w-full"
-        ></textarea>
-
-        <textarea
-          {...register("instructions")}
-          type="text"
-          placeholder="Write instructions seperated by comma"
-          className="block border-b-2 outline-0 border-b-blue-500 p-2.5 text-lg placeholder:text-gray-400 placeholder:font-semibold w-full h-50"
-        ></textarea>
-
-        <select
-          {...register("category")}
-          className="block border-b-2 outline-0 border-b-blue-500 p-2.5 text-lg text-gray-400 font-semibold w-full"
+        <Link
+          to={`/recipe/update/${recipe.id}`}
+          className="block text-center bg-accent py-3 rounded-xl hover:bg-hover text-yellow-200 font-medium tracking-wider text-lg uppercase w-full transition"
         >
-          <option value="breakfast">Breakfast</option>
-          <option value="lunch">Lunch</option>
-          <option value="snack">Snak</option>
-          <option value="dinner">Dinner</option>
-        </select>
-
-        <button className="bg-purple-800 text-xl py-2 px-5 rounded-xl mt-5 hover:bg-pink-800">
           Update Recipe
-        </button>
-      </form>
+        </Link>
+      </div>
     </div>
   );
 };

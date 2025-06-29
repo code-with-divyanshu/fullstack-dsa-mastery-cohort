@@ -9,11 +9,19 @@ const CreateRecipes = () => {
   const navigate = useNavigate();
 
   const [data, setData] = useContext(recipecontext);
-  const { register, handleSubmit, reset } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
 
   const sumbitHandler = (recipe) => {
     recipe.id = nanoid();
-    setData([...data, recipe]);
+    const newData = [...data];
+    newData.push(recipe);
+    setData(newData);
+    localStorage.setItem("recipes", JSON.stringify(newData));
     toast.success("New recipe created successfully!");
     navigate("/recipes");
     reset("");
@@ -23,61 +31,74 @@ const CreateRecipes = () => {
     <div className="w-full md:flex justify-center items-center">
       <form
         onSubmit={handleSubmit(sumbitHandler)}
-        className="md:w-[90%] xl:w-[70%] 2xl:w-1/2 flex flex-col gap-5 bg-gradient-to-r from-pink-200 to-fuchsia-400 sm:p-10  p-5 rounded-xl"
+        className="md:w-[90%] xl:w-[70%] 2xl:w-1/2 flex flex-col gap-5 bg-bg-secondary p-8 rounded-xl shadow-md"
       >
         <input
-          {...register("image")}
+          {...register("image", { required: true })}
           type="url"
           placeholder="Enter url of recipe image"
-          className="block border-b-2 outline-0 border-b-blue-500 p-2.5 text-lg placeholder:text-gray-400 placeholder:font-semibold"
+          className="block border-b-2 border-border-shadow outline-none p-2.5 text-lg placeholder:text-text-primary placeholder:font-semibold text-text-primary bg-bg-primary"
         />
+        {errors.image && (
+          <p className="text-red-500 mb-2">Image URL is required.</p>
+        )}
 
         <input
-          {...register("title")}
+          {...register("title", { required: true })}
           type="text"
           placeholder="Recipe Title"
-          className="block border-b-2 outline-0 border-b-blue-500 p-2.5 text-lg placeholder:text-gray-400 placeholder:font-semibold"
+          className="block border-b-2 border-border-shadow outline-none p-2.5 text-lg placeholder:text-text-primary placeholder:font-semibold text-text-primary bg-bg-primary"
         />
+        {errors.title && (
+          <p className="text-red-500 mb-2">Title is required.</p>
+        )}
 
         <input
-          {...register("chef")}
+          {...register("chef", { required: true })}
           type="text"
           placeholder="Chef Name"
-          className="block border-b-2 outline-0 border-b-blue-500 p-2.5 text-lg placeholder:text-gray-400 placeholder:font-semibold"
+          className="block border-b-2 border-border-shadow outline-none p-2.5 text-lg placeholder:text-text-primary placeholder:font-semibold text-text-primary bg-bg-primary"
         />
+        {errors.chef && <p className="text-red-500 mb-2">Chef is required.</p>}
 
         <textarea
-          {...register("description")}
-          type="text"
+          {...register("description", { required: true })}
           placeholder="Enter Description Here"
-          className="block border-b-2 outline-0 border-b-blue-500 p-2.5 text-lg placeholder:text-gray-400 placeholder:font-semibold"
+          className="block border-b-2 border-border-shadow outline-none p-2.5 text-lg placeholder:text-text-primary placeholder:font-semibold text-text-primary bg-bg-primary"
         ></textarea>
+        {errors.description && (
+          <p className="text-red-500 mb-2">Description is required.</p>
+        )}
 
         <textarea
           {...register("ingredients")}
-          type="text"
-          placeholder="Write ingredients seperated by comma"
-          className="block border-b-2 outline-0 border-b-blue-500 p-2.5 text-lg placeholder:text-gray-400 placeholder:font-semibold"
+          placeholder="Write ingredients separated by comma"
+          className="block border-b-2 border-border-shadow outline-none p-2.5 text-lg placeholder:text-text-primary placeholder:font-semibold text-text-primary bg-bg-primary"
         ></textarea>
 
         <textarea
           {...register("instructions")}
-          type="text"
-          placeholder="Write instructions seperated by comma"
-          className="block border-b-2 outline-0 border-b-blue-500 p-2.5 text-lg placeholder:text-gray-400 placeholder:font-semibold"
+          placeholder="Write instructions separated by comma"
+          className="block border-b-2 border-border-shadow outline-none p-2.5 text-lg placeholder:text-text-primary placeholder:font-semibold text-text-primary bg-bg-primary"
         ></textarea>
 
         <select
-          {...register("category")}
-          className="block border-b-2 outline-0 border-b-blue-500 p-2.5 text-lg text-gray-400 font-semibold"
+          {...register("category", { required: true })}
+          className="block border-b-2 border-border-shadow outline-none p-2.5 text-lg text-accent font-semibold bg-bg-primary"
         >
           <option value="breakfast">Breakfast</option>
           <option value="lunch">Lunch</option>
-          <option value="snack">Snak</option>
+          <option value="snack">Snack</option>
           <option value="dinner">Dinner</option>
         </select>
+        {errors.category && (
+          <p className="text-red-500 mb-2">Category is required.</p>
+        )}
 
-        <button className="bg-purple-800 text-xl py-2 px-5 rounded-xl mt-5 hover:bg-pink-800">
+        <button
+          type="submit"
+          className="bg-accent text-bg-primary text-xl py-2 px-5 rounded-xl mt-5 hover:bg-highlight font-semibold uppercase transition-colors duration-200"
+        >
           Create Recipe +
         </button>
       </form>

@@ -5,6 +5,9 @@ import About from "../pages/About";
 import CreateRecipes from "../pages/CreateRecipes";
 import SingleRecipe from "../pages/SingleRecipe";
 import LearnAxios from "../pages/LearnAxios";
+import UpdateRecipe from "../pages/UpdateRecipe";
+import Favourite from "../pages/Favourite";
+import PageNotFound from "../pages/PageNotFound";
 
 const MainRoutes = () => {
   return (
@@ -14,7 +17,11 @@ const MainRoutes = () => {
       <Route path="/recipes" element={<Recipes />} />
       <Route path="/recipe/details/:id" element={<SingleRecipe />} />
       <Route path="/create-recipes" element={<CreateRecipes />} />
+      <Route path="/recipe/update/:id" element={<UpdateRecipe />} />
+      <Route path="/favourites" element={<Favourite />} />
       <Route path="/learn-axios" element={<LearnAxios />} />
+      {/* Wild card route */}
+      <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
 };
