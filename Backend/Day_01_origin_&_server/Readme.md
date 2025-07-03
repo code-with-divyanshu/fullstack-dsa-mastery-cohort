@@ -32,6 +32,17 @@
 - A machine that responds to a user request and gets data from a database or serves files.
 - Node.js can be used to create servers easily.
 
+### The `http` Module in Node.js
+- The `http` module is a built-in Node.js module that allows you to create HTTP servers and handle HTTP requests and responses.
+- You do **not** need to install it separately; it comes with Node.js by default.
+- It provides methods to create a server, listen on a port, and handle incoming requests.
+b
+#### How it works:
+- You require the module using `const http = require('http');`.
+- Use `http.createServer()` to create a new server instance.
+- The server takes a callback function with `request` and `response` objects.
+- Use `server.listen(port, callback)` to start the server on a specific port.
+
 ## Example: Simple Node.js Server
 
 ```js
@@ -45,3 +56,4 @@ myServer.listen(3000, () => {
   console.log("Server is running on Port  3000");
 });
 ```
+---
