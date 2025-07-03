@@ -1,0 +1,14 @@
+{
+  "name": "express_server",
+  "version": "1.0.0",
+  "description": "\"Created Server using Express\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Diyanshu Bartwal",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
