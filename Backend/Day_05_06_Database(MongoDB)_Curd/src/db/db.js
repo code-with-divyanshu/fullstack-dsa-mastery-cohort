@@ -2,11 +2,12 @@ const { default: mongoose } = require("mongoose");
 
 const connectToDB = () => {
   mongoose
-    .connect(
-      "mongodb+srv://divyanshubartwal67:p8naLoRshLlqazoU@cluster0.0c0wlst.mongodb.net/cohort_learning"
-    )
+    .connect(process.env.MONGODB_URL)
     .then(() => {
-      console.log("DB connected successfully");
+      console.log("Connected to MongoDb");
+    })
+    .catch((err) => {
+      console.error("Error to connecting to MonogoDb", err);
     });
 };
 
