@@ -129,7 +129,7 @@ Middleware functions provide powerful modularity and flexibility in Express apps
 - Then navigate to the appropriate subdirectory:
 
   ```
-  cd fullstack-dsa-mastery-cohort/Backend/Day_07-10_mood_player
+  cd fullstack-dsa-mastery-cohort/Backend/Day_11_middleware
   ```
 
 ## ⭐ Star This Repository
