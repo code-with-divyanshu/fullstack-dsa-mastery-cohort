@@ -2,7 +2,7 @@ const { default: mongoose } = require("mongoose");
 
 const connectToDB = () => {
   mongoose
-    .connect(process.env.MONGODB_URL)
+    .connect(process.env.MONGODB_URI)
     .then(() => {
       console.log("Server is Connect to Database");
     })
