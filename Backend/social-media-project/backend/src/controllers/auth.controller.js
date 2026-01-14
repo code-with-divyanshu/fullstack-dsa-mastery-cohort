@@ -70,7 +70,25 @@ const loginController = async (req, res) => {
   });
 };
 
+const userController = (req, res) => {
+  const user = req.user;
+  res.json({
+    message: "Fetched User Successfully",
+    user,
+  });
+};
+
+const logoutController = (req, res) => {
+  res.clearCookie("accessToken");
+
+  res.json({
+    message: "Log out Successfully",
+  });
+};
+
 module.exports = {
   registerController,
   loginController,
+  userController,
+  logoutController,
 };
